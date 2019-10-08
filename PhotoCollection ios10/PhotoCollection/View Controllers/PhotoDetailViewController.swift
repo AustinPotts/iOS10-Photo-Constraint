@@ -66,10 +66,10 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         
         
         
-        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
-        imageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, constant: -100).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, constant: -300).isActive = true
         
         self.imageView = imageView
         
@@ -93,6 +93,7 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Give this photo a title:"
+        textField.backgroundColor = .white
         
         
         
