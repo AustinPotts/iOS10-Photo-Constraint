@@ -45,6 +45,7 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add Image", for: .normal)
+        button.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         
         
         button.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4).isActive = true
@@ -82,7 +83,7 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     // MARK: - Private Methods
     
-    private func addImage() {
+   @objc private func addImage() {
         
         let authorizationStatus = PHPhotoLibrary.authorizationStatus()
     
