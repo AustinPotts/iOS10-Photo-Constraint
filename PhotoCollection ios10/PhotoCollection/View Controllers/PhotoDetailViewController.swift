@@ -38,8 +38,9 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
-        imageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, constant: 0).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, constant: -100).isActive = true
         
+        self.imageView = imageView
         
         let button = UIButton(type: .system)
         view.addSubview(button)
