@@ -28,6 +28,37 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     func setUpSubViews() {
         
+        let saveButton = UIButton(type: .system)
+        saveButton.setTitle("Save", for: .normal)
+        saveButton.addTarget(self, action: #selector(savePhoto), for: .touchUpInside)
+        
+        
+        //Add as subview
+        view.addSubview(saveButton)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Constrain
+        let saveTopConstraint = NSLayoutConstraint(item: saveButton,
+                                                   attribute: .top,
+                                                   relatedBy: .equal,
+                                                   toItem: view.safeAreaLayoutGuide,
+                                                   attribute: .top,
+                                                   multiplier: 1,
+                                                   constant: 10)
+        
+        
+        let saveButtonTrailing =  NSLayoutConstraint(item: saveButton,
+                                                     attribute: .trailing,
+                                                     relatedBy: .equal,
+                                                     toItem: view.safeAreaLayoutGuide,
+                                                     attribute: .trailing,
+                                                     multiplier: 1,
+                                                     constant: -20)
+        
+        NSLayoutConstraint.activate([saveTopConstraint,
+                                     saveButtonTrailing])
+        
+        
         let imageView = UIImageView()
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +66,7 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         
         
         
-        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 4).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4).isActive = true
         imageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, constant: -100).isActive = true
@@ -63,9 +94,13 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Give this photo a title:"
         
-        textField.centerYAnchor.constraint(equalTo: button.centerYAnchor, constant: 10)
-        textField.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 10)
-        textField.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -10)
+        
+        
+        textField.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 4).isActive = true
+        textField.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 10).isActive = true
+        textField.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -10).isActive = true
+        
+        self.titleTextField = textField
         
         
         
@@ -107,7 +142,7 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    private func savePhoto() {
+   @objc private func savePhoto() {
         
         guard let image = imageView.image,
             let imageData = image.pngData(),
